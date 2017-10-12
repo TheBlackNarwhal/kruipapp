@@ -1,7 +1,7 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
-
+use App\score;
 use Illuminate\Http\Request;
 
 class scoreController extends Controller
@@ -13,7 +13,8 @@ class scoreController extends Controller
      */
     public function index()
     {
-        //
+        $scores = score::orderBy('kruipscore', 'DESC')->get();
+        return view('scores.index', compact('scores'));
     }
 
     /**
@@ -23,7 +24,8 @@ class scoreController extends Controller
      */
     public function create()
     {
-        //
+        $scores = score::all()->toArray();
+        return view('scores.create', compact('scores'));
     }
 
     /**
@@ -34,7 +36,15 @@ class scoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+   
+        $score = $this->validate(request(),[
+            'naam' => 'required'
+        ]);
+
+        score::create($score);
+
+        $scores = score::all()->toArray();
+        return view('scores.index', compact('scores'));
     }
 
     /**
