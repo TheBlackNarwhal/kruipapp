@@ -65,7 +65,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -77,19 +77,29 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+            <div class="content" style="margin-top:30px;">
+                <div class="title">Top 10</div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                
             </div>
-        </div>
+
+            
+            <table class="flex-center content" style="margin-top: 50px;">
+                <tr>
+                    <th>Score</th>
+                    <th>Naam</th>
+                    <th>Kruipen</th>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Darwin</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>egbert</td>
+                    <td>2</td>
+                </tr>
+            </table>
     </body>
 </html>
