@@ -58,25 +58,20 @@ class scoreController extends Controller
         
         if($score['score_blauw'] > $score['score_rood']){
             $this->updateGewonnen($score['teamblauw_player1'], $score['teamblauw_player2']);
-        }else if($score['score_blauw'] < $score['score_rood']){
-            $this->updateGewonnen($score['teamrood_player1'], $score['teamrood_player2']);
-        }
 
-        if ($score['score_blauw'] - $score['score_rood'] > 5) {
-            //Rood team moet ++ krijgen
-            $this->updateKruipen($score['teamrood_player1'], $score['teamrood_player2']);
-            $this->updateGewonnen($score['teamblauw_player1'], $score['teamblauw_player2']);
-           
-        } else if($score['score_rood'] - $score['score_blauw'] > 5){
-            //Blauw team moet ++ krijgen
-            $this->updateKruipen($score['teamblauw_player1'], $score['teamblauw_player2']);
+            if ($score['score_blauw'] - $score['score_rood'] > 5){
+                $this->updateKruipen($score['teamrood_player1'], $score['teamrood_player2']);
+            } 
+       }else if($score['score_blauw'] < $score['score_rood']){
             $this->updateGewonnen($score['teamrood_player1'], $score['teamrood_player2']);
             
-        }else{
-            
-        }
+            if($score['score_rood'] - $score['score_blauw'] > 5){
 
-
+            }
+       }else{
+           //error
+       }
+        
         match::create($score);
         return redirect('scores');
     }
