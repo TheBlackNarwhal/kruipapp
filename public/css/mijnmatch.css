@@ -4,3 +4,8 @@ table{
     width: 100%;
     text-align: center;
 }
+
+
+thead th{
+     text-align: center;
+}

@@ -35,8 +35,6 @@ class HomeController extends Controller
         })->orWhere(function ($query) {
             $query->where('teamrood_player2', '=', Auth::user()->name);
         })->limit(10)->get();
-        // print_r(compact('matches'));
         return view('home', compact('matches'));
-        
     }
 }

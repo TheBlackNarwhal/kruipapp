@@ -21,29 +21,23 @@
                     You are logged in!
                 </div>
             </div>
-        </div>
-    </div> -->
+        </div>-->
+    </div>
 
     <h5>Mijn matches</h5>
         <table border="1" class="striped">
- 
-        
-            <b>Je hebt nog geen matches gespeeld</b>
-       
+            @if($matches->count() > 0)
             <thead align="center">
                 <tr>
-                    <th><h4>Team Blauw Player 1</h4></th>
-                    <th><h4>teamblauw_player2</h4></th>
-                    <th><h4>teamrood_player1</h4></th>
-                    <th><h4>teamrood_player2</h4></th>
-                    <th><h4>score_blauw</h4></th>
-                    <th><h4>Aantal punten rood:</h4></th>
-                    <th><h4>Gespeeld om:</h4></th>
+                    <th><h4>Blauw Player 1</h4></th>
+                    <th><h4>Blauw Player 2</h4></th>
+                    <th><h4>Rood Player 1</h4></th>
+                    <th><h4>Rood Player 2</h4></th>
+                    <th><h4>Blauw Score</h4></th>
+                    <th><h4>Rood Score</h4></th>
+                    <th><h4>Gespeeld op:</h4></th>
                 </tr>
             </thead>
-           
-                
-
                 @foreach ($matches as $match)
                 <tr>
                     <td>
@@ -78,10 +72,13 @@
                     <td>{{$match['score_rood']}}</td>
                     <td>{{$match['created_at']->format('d M Y - H:i')}}</td>
                 </tr>
-                @endforeach
-           
+            @endforeach
+            @else
+                <b>Je hebt nog geen matches gespeeld</b>
+            @endif
         </table>
-        
 
-</div>
+
+    </div>
+
 @endsection
