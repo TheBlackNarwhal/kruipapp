@@ -10,7 +10,6 @@
 </head>
 <body>
 <div class="container">
-        <form method="post" action="{{url('scores')}}">
 			<div class="row">
 				<div class="col s12">
 
@@ -32,6 +31,7 @@
 
 				</div>
 			</div>
+        <form method="post" action="{{url('scores')}}">
             
             <div class="input-field">
                     <select class="select-button">
@@ -48,15 +48,15 @@
                     <select name="naam" placeholder="Kies" class="select-button">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
-                            <option value="hallo">{{$score['naam']}}</option>
+                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="input-field">
-                    <select class="select-button">
+                    <select name="naam2" class="select-button">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
-                            <option value="0">{{$score['naam']}}</option>
+                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -64,18 +64,18 @@
             <div class="col s6">
                 <h5>Team Rood:</h5>
                 <div class="input-field">
-                    <select class="select-button">
+                    <select name="naam3" class="select-button">
                     <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
-                            <option value="0">{{$score['naam']}}</option>
+                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="input-field">
-                    <select class="select-button">
+                    <select name="naam4" class="select-button">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
-                            <option value="0">{{$score['naam']}}</option>
+                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -89,8 +89,8 @@
           
             {{csrf_field()}}
             <h5>Stand</h5>
-            <input type="number" name="" value="" placeholder="Team blauw"><br>
-            <input type="number" name="" value="" placeholder="Team rood"><br>
+            <input type="number" name="standblauw" value="" placeholder="Team blauw"><br>
+            <input type="number" name="standrood" value="" placeholder="Team rood"><br>
             <!-- <input class="waves-effect waves-light btn" type="submit" value="Toevoegen"> -->
             <button class="waves-effect waves-light btn" type="submit"  style="margin-left:38px">Add Product</button>
         </form>
