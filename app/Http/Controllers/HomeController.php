@@ -28,14 +28,15 @@ class HomeController extends Controller
     
      public function index()
     {
-        $scores = match::where('teamblauw_player1', '=', Auth::user()->name)->orWhere(function ($query) {
+        $matches = match::where('teamblauw_player1', '=', Auth::user()->name)->orWhere(function ($query) {
             $query->where('teamblauw_player2', '=', Auth::user()->name);
         })->orWhere(function ($query) {
             $query->where('teamrood_player1', '=', Auth::user()->name);
         })->orWhere(function ($query) {
             $query->where('teamrood_player2', '=', Auth::user()->name);
-        })->get();
-
-        return view('home', compact('scores'));
+        })->limit(10)->get();
+        // print_r(compact('matches'));
+        return view('home', compact('matches'));
+        
     }
 }

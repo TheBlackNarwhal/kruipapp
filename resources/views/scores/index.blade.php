@@ -53,11 +53,11 @@
 						<li class="divider"></li>
 						<li><a href="https://www.dtcmedia.nl/" target="_blank">Home</a></li>
 					</ul>
-					<nav>
+					<nav style="background-color:#eec86e;">
 						<div class="nav-wrapper">
 							<ul id="nav-mobile" class="right">
                                 <li><a href="{{url('/scores/create')}}">Nieuwe game</a></li>
-                                <li><a href="{{url('/home')}}">Mijn maches</a></li>
+                                <li><a href="{{url('/home')}}">Mijn info</a></li>
 								<li><a class="dropdown-button" href="#!" data-activates="dropdown-menu">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
 							</ul>
 						</div>

@@ -91,16 +91,60 @@
                     <th>Naam</th>
                     <th>Kruipen</th>
                 </tr>
+
+
+                
                 <tr>
-                    <td>10</td>
-                    <td>Darwin</td>
-                    <td>1</td>
+                    <td><h1>10</h1></td>
+                    <td><h1>Darwin</h1></td>
+                    <td><h1>1</h1></td>
                 </tr>
                 <tr>
-                    <td>6</td>
-                    <td>egbert</td>
-                    <td>2</td>
+                    <td><h2>10</h2></td>
+                    <td><h2>Darwin</h2></td>
+                    <td><h2>1</h2></td>
                 </tr>
+                <tr>
+                    <td><h3>10</h3></td>
+                    <td><h3>Darwin</h3></td>
+                    <td><h3>1</h3></td>
+                </tr>
+                <tr>
+                    <td><h4>10</h4></td>
+                    <td><h4>Darwin</h4></td>
+                    <td><h4>1</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>10</h4></td>
+                    <td><h4>Darwin</h4></td>
+                    <td><h4>1</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>10</h4></td>
+                    <td><h4>Darwin</h4></td>
+                    <td><h4>1</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>10</h4></td>
+                    <td><h4>Darwin</h4></td>
+                    <td><h4>1</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>10</h4></td>
+                    <td><h4>Darwin</h4></td>
+                    <td><h4>1</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>10</h4></td>
+                    <td><h4>Darwin</h4></td>
+                    <td><h4>1</h4></td>
+                </tr>
+                <tr>
+                    <td><h4>10</h4></td>
+                    <td><h4>Darwin</h4></td>
+                    <td><h4>1</h4></td>
+                </tr>
+              
             </table>
     </body>
 </html>
