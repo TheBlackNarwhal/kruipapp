@@ -91,19 +91,15 @@
         <h5>Recente matches</h5>
           <table class="striped">
             <thead>
-                <th>Blauw Speler 1</th>
-                <th>Blauw Speler 2</th>
-                <th>Rood Speler 1</th>
-                <th>Rood Speler 2</th>
+                <th>Team Blauw</th>
+                <th>Team Rood</th>
                 <th>score</th>
             </thead>
               
             @foreach ($matches as $match)
             <tr>
-                <td>{{$match['teamblauw_player1']}}</td>
-                <td>{{$match['teamblauw_player2']}}</td>
-                <td>{{$match['teamrood_player1']}}</td>
-                <td>{{$match['teamrood_player2']}}</td>
+                <td>{{$match['teamblauw_player1']. " &amp; ". $match['teamblauw_player2']}}</td>
+                <td>{{$match['teamrood_player1']. " &amp; ". $match['teamrood_player2']}}</td>
                 <td>{{$match['score_blauw'] . " - " . $match['score_rood']}}</td>
             </tr>
             @endforeach
