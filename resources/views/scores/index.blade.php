@@ -39,7 +39,7 @@
                 <td>{{$score['gewonnengames']}}</td>
             </tr>
         @endforeach
-        
+
     </table> -->
 
     <div class="container">
@@ -99,7 +99,13 @@
               
             @foreach ($matches as $match)
             <tr>
-                <td>{{$match['teamblauw_player1']. " &amp; ". $match['teamblauw_player2']}}</td>
+                <td>
+                @if($match['teamblauw_player1'] != $match['teamblauw_player2'])
+                    {{$match['teamblauw_player1']. " &amp; ". $match['teamblauw_player2']}}
+                @else
+                    {{$match['teamblauw_player1']}}
+                @endif
+                </td>
                 <td>{{$match['teamrood_player1']. " &amp; ". $match['teamrood_player2']}}</td>
                 <td>{{$match['score_blauw'] . " - " . $match['score_rood']}}</td>
                 <td>{{$match['created_at']->format('d M Y - H:i')}}</td>
