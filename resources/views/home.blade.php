@@ -1,3 +1,12 @@
+
+<style> 
+    .content {
+        text-align: center;
+    }
+
+
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -21,22 +30,56 @@
     </div> -->
 
     <h5>Scores</h5>
-        <table class="striped">
+        <table border="1" class="striped flex-center content">
             <thead>
-                <th>Gekropen</th>
-                <th>Wie</th>
-                <th>Aantal gewonnen potjes</th>
+            <tr>
+                <th>Blauw player1</th>
+                <th>teamblauw_player2</th>
+                <th>teamrood_player1</th>
+                <th>teamrood_player2</th>
+                <th>score_blauw</th>
+                <th>Aantal punten rood:</th>
+                <th>Gespeeld om:</th>
+            </tr>
             </thead>
               
             @foreach ($scores as $score)
             <tr>
-                <td>{{$score['kruipscore']}}</td>
-                <td>{{$score['naam'] . " " . $score['achternaam']}}</td>
-                <td>{{$score['gewonnengames']}}</td>
+                <td>
+                    @if($score['teamblauw_player1'] == Auth::user()->name)
+                        <b>{!!$score['teamblauw_player1']!!}</b>
+                        @else
+                        {{$score['teamblauw_player1']}}
+                    @endif
+                </td>
+                <td>
+                    @if($score['teamblauw_player2'] == Auth::user()->name)
+                        <b>{!!$score['teamblauw_player2']!!}</b>
+                        @else
+                        {{$score['teamblauw_player2']}}
+                    @endif
+                </td>
+                <td>
+                    @if($score['teamrood_player1'] == Auth::user()->name)
+                        <b>{!!$score['teamrood_player1']!!}</b>
+                        @else
+                        {{$score['teamrood_player1']}}
+                    @endif
+                </td>
+                <td>
+                    @if($score['teamrood_player2'] == Auth::user()->name)
+                        <b>{!!$score['teamrood_player2']!!}</b>
+                        @else
+                        {{$score['teamrood_player2']}}
+                    @endif
+                </td>
+                <td>{{$score['score_blauw']}}</td>
+                <td>{{$score['score_rood']}}</td>
+                <td>{{$score['created_at']->format('d M Y - H:i')}}</td>
             </tr>
             @endforeach
         </table>
-        <?php echo Auth::user()->email; ?>
+        
 
 </div>
 @endsection
