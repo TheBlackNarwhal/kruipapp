@@ -21,7 +21,8 @@ class scoreController extends Controller
     public function index()
     {
         $scores = score::orderBy('kruipscore', 'desc')->get();
-        return view('scores.index', compact('scores'));
+        $matches = match::all();
+        return view('scores.index', compact('scores', 'matches'));
     }
 
     /**
