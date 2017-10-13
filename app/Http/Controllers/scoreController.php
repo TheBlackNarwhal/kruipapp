@@ -21,7 +21,7 @@ class scoreController extends Controller
     public function index()
     {
         $scores = score::orderBy('kruipscore', 'desc')->get();
-        $matches = match::all();
+        $matches = match::orderBy('id', 'desc')->limit(10)->get();
         return view('scores.index', compact('scores', 'matches'));
     }
 
@@ -56,18 +56,21 @@ class scoreController extends Controller
             'score_rood' => 'required'
         ]);
         
-      //  $antwoord = $score['standblauw'] + $score['standrood'];
-        
+        if($score['score_blauw'] > $score['score_rood']){
+            $this->updateGewonnen($score['teamblauw_player1'], $score['teamblauw_player2']);
+        }else if($score['score_blauw'] < $score['score_rood']){
+            $this->updateGewonnen($score['teamrood_player1'], $score['teamrood_player2']);
+        }
 
         if ($score['score_blauw'] - $score['score_rood'] > 5) {
             //Rood team moet ++ krijgen
-            
             $this->updateKruipen($score['teamrood_player1'], $score['teamrood_player2']);
+            $this->updateGewonnen($score['teamblauw_player1'], $score['teamblauw_player2']);
            
         } else if($score['score_rood'] - $score['score_blauw'] > 5){
-            //Blouw team moet ++ krijgen
-            
+            //Blauw team moet ++ krijgen
             $this->updateKruipen($score['teamblauw_player1'], $score['teamblauw_player2']);
+            $this->updateGewonnen($score['teamrood_player1'], $score['teamrood_player2']);
             
         }else{
             
@@ -90,7 +93,20 @@ class scoreController extends Controller
 
         
     }
-    
+   
+    public function updateGewonnen($i1, $i2)
+    {
+        $persoon1 = score::where('naam', $i1)->first();
+        $persoon2 = score::where('naam', $i2)->first();
+        
+        $persoon1->gewonnengames++;
+        $persoon2->gewonnengames++;
+        $persoon1->save();
+        $persoon2->save();
+
+        
+    }
+
     public function maakGelijk($email, $name)
     {
         DB::table('score')->insert([

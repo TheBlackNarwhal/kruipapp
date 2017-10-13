@@ -93,7 +93,8 @@
             <thead>
                 <th>Team Blauw</th>
                 <th>Team Rood</th>
-                <th>score</th>
+                <th>Score</th>
+                <th>Gespeeld</th>
             </thead>
               
             @foreach ($matches as $match)
@@ -101,6 +102,7 @@
                 <td>{{$match['teamblauw_player1']. " &amp; ". $match['teamblauw_player2']}}</td>
                 <td>{{$match['teamrood_player1']. " &amp; ". $match['teamrood_player2']}}</td>
                 <td>{{$match['score_blauw'] . " - " . $match['score_rood']}}</td>
+                <td>{{$match['created_at']}}</td>
             </tr>
             @endforeach
           </table>
