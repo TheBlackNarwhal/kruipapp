@@ -45,7 +45,7 @@
             <div class="col s6">
                 <h5>Team Blauw:</h5>
                 <div class="input-field">
-                    <select name="naam" placeholder="Kies" class="select-button">
+                    <select name="teamblauw_player1" placeholder="Kies" class="select-button">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -53,7 +53,7 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <select name="naam2" class="select-button">
+                    <select name="teamblauw_player2" class="select-button">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -64,7 +64,7 @@
             <div class="col s6">
                 <h5>Team Rood:</h5>
                 <div class="input-field">
-                    <select name="naam3" class="select-button">
+                    <select name="teamrood_player1" class="select-button">
                     <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -72,7 +72,7 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <select name="naam4" class="select-button">
+                    <select name="teamrood_player2" class="select-button">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -89,8 +89,8 @@
           
             {{csrf_field()}}
             <h5>Stand</h5>
-            <input type="number" name="standblauw" value="" placeholder="Team blauw"><br>
-            <input type="number" name="standrood" value="" placeholder="Team rood"><br>
+            <input type="number" name="score_blauw" value="" placeholder="Team blauw"><br>
+            <input type="number" name="score_rood" value="" placeholder="Team rood"><br>
             <!-- <input class="waves-effect waves-light btn" type="submit" value="Toevoegen"> -->
             <button class="waves-effect waves-light btn" type="submit"  style="margin-left:38px">Add Product</button>
         </form>

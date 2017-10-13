@@ -74,8 +74,6 @@
                 <th>Gekropen</th>
                 <th>Wie</th>
                 <th>Aantal gewonnen potjes</th>
-                <th>Team</th>
-                <th>Gekropen</th>
             </thead>
               
             @foreach ($scores as $score)

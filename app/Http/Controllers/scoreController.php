@@ -2,6 +2,7 @@
  
 namespace App\Http\Controllers;
 use App\score;
+use App\match;
 use Illuminate\Http\Request;
 
 class scoreController extends Controller
@@ -40,35 +41,34 @@ class scoreController extends Controller
         $rood;
 
         $score = $this->validate(request(),[
-            'naam' => 'required',
-            'naam2' => 'required',
-            'naam3' => 'required',
-            'naam4' => 'required',
-            'standblauw' => 'required',
-            'standrood' => 'required'
+            'teamblauw_player1' => 'required',
+            'teamblauw_player2' => 'required',
+            'teamrood_player1' => 'required',
+            'teamrood_player2' => 'required',
+            'score_blauw' => 'required',
+            'score_rood' => 'required'
         ]);
         
-        $antwoord = $score['standblauw'] + $score['standrood'];
+      //  $antwoord = $score['standblauw'] + $score['standrood'];
         
 
-        if ($score['standblauw'] - $score['standrood'] > 5) {
+        if ($score['score_blauw'] - $score['score_rood'] > 5) {
             //Rood team moet ++ krijgen
             
-            $this->updateKruipen($score['naam3'], $score['naam4']);
+            $this->updateKruipen($score['teamrood_player1'], $score['teamrood_player2']);
            
-        } else if($score['standrood'] - $score['standblauw'] > 5){
+        } else if($score['score_rood'] - $score['score_blauw'] > 5){
             //Blouw team moet ++ krijgen
             
-            $this->updateKruipen($score['naam'], $score['naam2']);
+            $this->updateKruipen($score['teamblauw_player1'], $score['teamblauw_player2']);
             
         }else{
             
         }
 
 
-        // score::create($score);
-        $scores = score::all()->toArray();
-        return view('scores.index', compact('scores'));
+        match::create($score);
+        return redirect('scores');
     }
 
     public function updateKruipen($i1, $i2)
