@@ -90,59 +90,14 @@ class scoreController extends Controller
 
         
     }
-
-
-        // if ($score['standblauw'] - $score['standrood'] > 5) {   
-        // } else if($score['standrood'] - $score['standblauw'] > 5){
-        //     $rood = true;
-        //     $blauw = true;
-        // }else{
-            
-        // }
-        // if ($score['standblauw'] > $score['standrood']) {
-        //     $blauw = true;
-        //     $rood = false;
     
-        //     if ($blauw == true) { echo "Blouw wint"; } 
-        //     else if($rood == true){ echo "Rood wint"; }
-        //     else{ echo "gelijk"; }
-        // }
-
-
-        
-        // if ($score['standblauw'] - $score['standrood'] > 5) {
-        //     $blauw = true;
-        //     $rood = false;
-
-        //     if ($blauw == true) {
-        //         echo "Blouw wint";
-        //      } else if($rood == true){
-        //          echo "Rood wint";
-        //      }else{
-        //          echo "gelijk";
-        //      }
-        // } else if($score['standrood'] - $score['standblauw'] > 5){
-        //     $rood = true;
-        //     $blauw = true;
-        // }else{
-            
-        // }
-        
-
-        
-        
-        // if ($score['standblauw'] - $score['standrood'] > 5 || $score['standrood'] - $score['standblauw'] > 5) {
-      
-        // } else{
-            
-        // }
-        
-        // print_r($antwoord);
-        // print_r($score);
-        
-
-        
-    
+    public function maakGelijk($email, $name)
+    {
+        DB::table('score')->insert([
+            'naam' => $name,
+            'email' => $email
+        ]);
+    }
 
     /**
      * Display the specified resource.

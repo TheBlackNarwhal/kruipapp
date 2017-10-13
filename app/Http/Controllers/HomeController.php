@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\score;
+
 
 class HomeController extends Controller
 {
@@ -21,8 +23,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+     public function index()
     {
-        return view('home');
+        // $user = Auth::user()->email;
+        // $scores = score::where('naam', $i1)->first();
+        $scores = score::orderBy('email', 'desc')->get();
+        return view('home', compact('scores'));
     }
 }
