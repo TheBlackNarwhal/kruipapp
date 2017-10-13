@@ -23,6 +23,7 @@
 						<div class="nav-wrapper">
 							<ul id="nav-mobile" class="right">
                                 <li><a href="create">Nieuwe game</a></li>
+                                <li><a href="{{url('/scores/mijnmaches')}}">Mijn maches</a></li>
 								<li><a class="dropdown-button" href="#!" data-activates="dropdown-menu">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
 							</ul>
 						</div>

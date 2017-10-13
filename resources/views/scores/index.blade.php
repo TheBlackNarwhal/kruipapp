@@ -13,8 +13,8 @@
         </style>
 </head>
 <body>
-<!-- 
-    @if (Route::has('login'))
+
+    <!-- @if (Route::has('login'))
         <div class="top-right links">
             @auth
                 <a href="{{ url('/scores') }}">Scores</a>
@@ -24,7 +24,8 @@
                 <a href="{{ route('register') }}">Register</a>
             @endauth
         </div>
-    @endif
+    @endif -->
+    <!--
     <table style="margin-top: 50px;">
         <tr>
             <th>Score</th>
@@ -56,6 +57,7 @@
 						<div class="nav-wrapper">
 							<ul id="nav-mobile" class="right">
                                 <li><a href="{{url('/scores/create')}}">Nieuwe game</a></li>
+                                <li><a href="{{url('/home')}}">Mijn maches</a></li>
 								<li><a class="dropdown-button" href="#!" data-activates="dropdown-menu">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
 							</ul>
 						</div>
