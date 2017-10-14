@@ -62,7 +62,7 @@
                 <b>Je hebt nog geen matches gespeeld</b>
             @endif
         </table>
-    <a href="">Laad alles zien</a>
+    <a href="{{url('/mijnmatches')}}">Laat alles zien</a>
     <br><br>
     <h4>Beste matches:</h4>
     <table border="1" class="striped">
