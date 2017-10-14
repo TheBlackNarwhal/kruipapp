@@ -43,7 +43,7 @@
     </table> -->
 
     <div class="container">
-      
+
     @include('layouts.header')
 
       <div class="row">
