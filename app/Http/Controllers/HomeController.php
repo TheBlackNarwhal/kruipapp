@@ -38,8 +38,6 @@ class HomeController extends Controller
 
         $score = score::where('naam', Auth::user()->name)->first();
 
-
-
         return view('home', compact('matches', 'score'));
     }
 }
