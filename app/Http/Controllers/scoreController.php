@@ -44,9 +44,6 @@ class scoreController extends Controller
      */
     public function store(Request $request)
     {
-        $blauw;
-        $rood;
-
         $score = $this->validate(request(),[
             'teamblauw_player1' => 'required',
             'teamblauw_player2' => 'required',
