@@ -55,4 +55,12 @@ class HomeController extends Controller
 
         return view('mijnmatches', compact('matches', 'score'));
     }
+
+
+    public function welcomepage()
+    {
+        $scores = score::orderBy('kruipscore', 'desc')->get();
+
+        return view('welcome', compact('scores'));
+    }
 }
