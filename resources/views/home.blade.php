@@ -8,6 +8,7 @@
 <h1>Hallo {{Auth::user()->name}}</h1>
     <hr>
     <h4>Aantal gewonnen games: {{$score['gewonnengames']}}</h4>
+    <h4>Aantal gekropen games: {{$score['kruipscore']}}</h4>
     <br>
     <h4>Mijn match history:</h4>
         <table border="1" class="striped">
@@ -25,34 +26,55 @@
             </thead>
                 @foreach ($matches as $match)
                 <tr>
-                    <td>
-                        @if($match['teamblauw_player1'] == Auth::user()->name)
-                            <b>{!!$match['teamblauw_player1']!!}</b>
+                    @if($match['teamblauw_player1'] == $match['teamblauw_player2'])
+                        <td colspan="2">
+                            @if($match['teamblauw_player1'] == Auth::user()->name)
+                                <b>{!!$match['teamblauw_player1']!!}</b>
                             @else
-                            {{$match['teamblauw_player1']}}
-                        @endif
-                    </td>
-                    <td>
-                        @if($match['teamblauw_player2'] == Auth::user()->name)
-                            <b>{!!$match['teamblauw_player2']!!}</b>
+                                {{$match['teamblauw_player1']}}
+                            @endif
+                        </td>
+                    @else
+                        <td>
+                            @if($match['teamblauw_player1'] == Auth::user()->name)
+                                <b>{!!$match['teamblauw_player1']!!}</b>
                             @else
-                            {{$match['teamblauw_player2']}}
-                        @endif
-                    </td>
-                    <td>
-                        @if($match['teamrood_player1'] == Auth::user()->name)
-                            <b>{!!$match['teamrood_player1']!!}</b>
+                                {{$match['teamblauw_player1']}}
+                            @endif
+                        </td>
+                        <td>
+                            @if($match['teamblauw_player2'] == Auth::user()->name)
+                                <b>{!!$match['teamblauw_player2']!!}</b>
                             @else
-                            {{$match['teamrood_player1']}}
-                        @endif
-                    </td>
-                    <td>
-                        @if($match['teamrood_player2'] == Auth::user()->name)
-                            <b>{!!$match['teamrood_player2']!!}</b>
+                                {{$match['teamblauw_player2']}}
+                            @endif
+                        </td>
+                    @endif
+
+                    @if($match['teamrood_player1'] == $match['teamrood_player2'])
+                        <td colspan="2">
+                            @if($match['teamrood_player1'] == Auth::user()->name)
+                                <b>{!!$match['teamrood_player1']!!}</b>
                             @else
-                            {{$match['teamrood_player2']}}
-                        @endif
-                    </td>
+                                {{$match['teamrood_player1']}}
+                            @endif
+                        </td>
+                    @else
+                        <td>
+                            @if($match['teamrood_player1'] == Auth::user()->name)
+                                <b>{!!$match['teamrood_player1']!!}</b>
+                            @else
+                                {{$match['teamrood_player1']}}
+                            @endif
+                        </td>
+                        <td>
+                            @if($match['teamrood_player2'] == Auth::user()->name)
+                                <b>{!!$match['teamrood_player2']!!}</b>
+                            @else
+                                {{$match['teamrood_player2']}}
+                            @endif
+                        </td>
+                    @endif
                     <td>{{$match['score_blauw']}}</td>
                     <td>{{$match['score_rood']}}</td>
                     <td>{{$match['created_at']->format('d M Y - H:i')}}</td>
