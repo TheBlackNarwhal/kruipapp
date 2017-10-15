@@ -84,7 +84,13 @@
                     {{$match['teamblauw_player1']}}
                 @endif
                 </td>
-                <td>{{$match['teamrood_player1']. " &amp; ". $match['teamrood_player2']}}</td>
+                <td>
+                    @if($match['teamrood_player1'] != $match['teamrood_player2'])
+                        {{$match['teamrood_player1']. " &amp; ". $match['teamrood_player2']}}
+                    @else
+                        {{$match['teamrood_player1']}}
+                    @endif
+                </td>
                 <td>{{$match['score_blauw'] . " - " . $match['score_rood']}}</td>
                 <td>{{$match['created_at']->format('d M Y - H:i')}}</td>
             </tr>

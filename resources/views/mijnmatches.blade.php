@@ -27,6 +27,7 @@
             </thead>
                 @foreach ($matches as $match)
                 <tr>
+{{--                    @if($match['teamblauw_player1'] == $match['teamblauw_player2'])--}}
                     <td>
                         @if($match['teamblauw_player1'] == Auth::user()->name)
                             <b>{!!$match['teamblauw_player1']!!}</b>
