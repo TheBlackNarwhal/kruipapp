@@ -62,6 +62,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            b{
+                color: #4e9dd2;
+            }
         </style>
     </head>
     <body>
