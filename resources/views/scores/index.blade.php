@@ -39,34 +39,12 @@
                 <td>{{$score['gewonnengames']}}</td>
             </tr>
         @endforeach
-        
+
     </table> -->
 
     <div class="container">
 
-			<div class="row">
-				<div class="col s12">
-
-					<ul id="dropdown-menu" class="dropdown-content">
-						<li><a href="#!">Scores</a></li>
-						<li><a href="#!">Nieuwe game</a></li>
-						<li class="divider"></li>
-						<li><a href="https://www.dtcmedia.nl/" target="_blank">Home</a></li>
-					</ul>
-					<nav>
-						<div class="nav-wrapper">
-							<ul id="nav-mobile" class="right">
-                                <li><a href="{{url('/scores/create')}}">Nieuwe game</a></li>
-                                <li><a href="{{url('/home')}}">Mijn maches</a></li>
-								<li><a class="dropdown-button" href="#!" data-activates="dropdown-menu">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
-							</ul>
-						</div>
-                       
-					</nav>
-
-				</div>
-			</div>
-            
+    @include('layouts.header')
 
       <div class="row">
 		<div class="col s6">
@@ -99,8 +77,20 @@
               
             @foreach ($matches as $match)
             <tr>
-                <td>{{$match['teamblauw_player1']. " &amp; ". $match['teamblauw_player2']}}</td>
-                <td>{{$match['teamrood_player1']. " &amp; ". $match['teamrood_player2']}}</td>
+                <td>
+                @if($match['teamblauw_player1'] != $match['teamblauw_player2'])
+                    {{$match['teamblauw_player1']. " &amp; ". $match['teamblauw_player2']}}
+                @else
+                    {{$match['teamblauw_player1']}}
+                @endif
+                </td>
+                <td>
+                    @if($match['teamrood_player1'] != $match['teamrood_player2'])
+                        {{$match['teamrood_player1']. " &amp; ". $match['teamrood_player2']}}
+                    @else
+                        {{$match['teamrood_player1']}}
+                    @endif
+                </td>
                 <td>{{$match['score_blauw'] . " - " . $match['score_rood']}}</td>
                 <td>{{$match['created_at']->format('d M Y - H:i')}}</td>
             </tr>

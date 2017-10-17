@@ -62,6 +62,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            b{
+                color: #4e9dd2;
+            }
         </style>
     </head>
     <body>
@@ -87,20 +91,80 @@
             
             <table class="flex-center content" style="margin-top: 50px;">
                 <tr>
-                    <th>Score</th>
+                    <th>Gekropen</th>
                     <th>Naam</th>
-                    <th>Kruipen</th>
+                    <th>Gewonnen games</th>
                 </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Darwin</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>egbert</td>
-                    <td>2</td>
-                </tr>
+
+                <?php $x = 1; ?>
+                @foreach($scores as $score)
+
+                    <tr>
+                        <td> <h{{$x}}> {{$score['kruipscore']}} </h{{$x}}> </td>
+                        <td> <h{{$x}}> {{$score['naam']}} </h{{$x}}> </td>
+                        <td> <h{{$x}}> {{$score['gewonnengames']}} </h{{$x}}> </td>
+                    </tr>
+                    @if($x != 4)
+                        <?php $x++; ?>
+                    @endif
+                @endforeach
+
+
+
+
+
+
+
+
+
+
+
+                {{--<tr>--}}
+                    {{--<td><h2>10</h2></td>--}}
+                    {{--<td><h2>Darwin</h2></td>--}}
+                    {{--<td><h2>1</h2></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h3>10</h3></td>--}}
+                    {{--<td><h3>Darwin</h3></td>--}}
+                    {{--<td><h3>1</h3></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h4>10</h4></td>--}}
+                    {{--<td><h4>Darwin</h4></td>--}}
+                    {{--<td><h4>1</h4></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h4>10</h4></td>--}}
+                    {{--<td><h4>Darwin</h4></td>--}}
+                    {{--<td><h4>1</h4></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h4>10</h4></td>--}}
+                    {{--<td><h4>Darwin</h4></td>--}}
+                    {{--<td><h4>1</h4></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h4>10</h4></td>--}}
+                    {{--<td><h4>Darwin</h4></td>--}}
+                    {{--<td><h4>1</h4></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h4>10</h4></td>--}}
+                    {{--<td><h4>Darwin</h4></td>--}}
+                    {{--<td><h4>1</h4></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h4>10</h4></td>--}}
+                    {{--<td><h4>Darwin</h4></td>--}}
+                    {{--<td><h4>1</h4></td>--}}
+                {{--</tr>--}}
+                {{--<tr>--}}
+                    {{--<td><h4>10</h4></td>--}}
+                    {{--<td><h4>Darwin</h4></td>--}}
+                    {{--<td><h4>1</h4></td>--}}
+                {{--</tr>--}}
+              
             </table>
     </body>
 </html>
