@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col s12">
-
         <ul id="dropdown-menu" class="dropdown-content">
             <li><a href="#!">Scores</a></li>
             <li><a href="#!">Nieuwe game</a></li>
@@ -19,8 +18,6 @@
                     @endif
                 </ul>
             </div>
-
         </nav>
-
     </div>
 </div>
