@@ -25,7 +25,11 @@
                 </tr>
             </thead>
                 @foreach ($matches as $match)
-                <tr>
+                @if($match['teamblauw_player1'] == Auth::user()->name || $match['teamblauw_player2'] == Auth::user()->name and $match['score_blauw'] < $match['score_rood'])
+                    <tr style="color:red;">
+                @else
+                    <tr>
+                @endif
                     @if($match['teamblauw_player1'] == $match['teamblauw_player2'])
                         <td colspan="2">
                             @if($match['teamblauw_player1'] == Auth::user()->name)
