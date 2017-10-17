@@ -10,10 +10,10 @@
         <nav style="background-color:#eec86e;">
             <div class="nav-wrapper">
                 <ul id="nav-mobile" class="right">
-                    @if($_SERVER['REQUEST_URI'] == "/kruipapp/public/scores")
+                    @if($_SERVER['REQUEST_URI'] == "/scores")
                         <li><a href="{{url('/scores/create')}}">Nieuwe game</a></li>
                         <li><a href="{{url('/home')}}">Mijn info</a></li>
-                    @elseif($_SERVER['REQUEST_URI'] == "/kruipapp/public/scores/create")
+                    @elseif($_SERVER['REQUEST_URI'] == "/create")
                         <li><a href="{{url('/scores')}}">Scores</a></li>
                         <li><a href="{{url('/home')}}">Mijn info</a></li>
                     @endif
