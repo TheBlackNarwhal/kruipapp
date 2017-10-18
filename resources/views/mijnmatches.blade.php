@@ -8,6 +8,7 @@
 <h1>Hallo {{Auth::user()->name}}</h1>
     <hr>
     <h4>Aantal gewonnen games: {{$score['gewonnengames']}}</h4>
+    <h4>Aantal gekropen games: {{$score['kruipscore']}}</h4>
     <br>
     <h4>Mijn match history:</h4>
     <a href="home">Terug</a>
@@ -33,77 +34,77 @@
                 @else
                     <tr>
                 @endif
-                    @if($match['teamblauw_player1'] == $match['teamblauw_player2'])
-                        <td colspan="2">
-                            @if($match['teamblauw_player1'] == Auth::user()->name)
-                                <b>{!!$match['teamblauw_player1']!!}</b>
-                            @else
-                                {{$match['teamblauw_player1']}}
-                            @endif
-                        </td>
+                @if($match['teamblauw_player1'] == $match['teamblauw_player2'])
+                <td colspan="2">
+                    @if($match['teamblauw_player1'] == Auth::user()->name and \App\Http\Controllers\scoreController::verloren($match) == true)
+                        <b style="color:rgb(208, 24, 24);">{!!$match['teamblauw_player1']!!}</b>
+                    @elseif($match['teamblauw_player1'] == Auth::user()->name)
+                        <b>{!!$match['teamblauw_player1']!!}</b>
                     @else
-                        <td>
-                            @if($match['teamblauw_player1'] == Auth::user()->name)
-                                <b>{!!$match['teamblauw_player1']!!}</b>
-                                @else
-                                {{$match['teamblauw_player1']}}
-                            @endif
-                        </td>
-                        <td>
-                            @if($match['teamblauw_player2'] == Auth::user()->name)
-                                <b>{!!$match['teamblauw_player2']!!}</b>
-                                @else
-                                {{$match['teamblauw_player2']}}
-                            @endif
-                        </td>
+                        {{$match['teamblauw_player1']}}
                     @endif
-
-                    @if($match['teamrood_player1'] == $match['teamrood_player2'])
-                        <td colspan="2">
-                            @if($match['teamrood_player1'] == Auth::user()->name)
-                                <b>{!!$match['teamrood_player1']!!}</b>
-                            @else
-                                {{$match['teamrood_player1']}}
-                            @endif
-                        </td>
+                </td>
+                @else
+                <td>
+                    @if($match['teamblauw_player1'] == Auth::user()->name and \App\Http\Controllers\scoreController::verloren($match) == true)
+                        <b style="color:rgb(208, 24, 24);">{!!$match['teamblauw_player1']!!}</b>
+                    @elseif($match['teamblauw_player1'] == Auth::user()->name)
+                        <b>{!!$match['teamblauw_player1']!!}</b>
                     @else
-                        <td>
-                            @if($match['teamrood_player1'] == Auth::user()->name)
-                                <b>{!!$match['teamrood_player1']!!}</b>
-                            @else
-                                {{$match['teamrood_player1']}}
-                            @endif
-                        </td>
-                        <td>
-                            @if($match['teamrood_player2'] == Auth::user()->name)
-                                <b>{!!$match['teamrood_player2']!!}</b>
-                            @else
-                                {{$match['teamrood_player2']}}
-                            @endif
-                        </td>
+                        {{$match['teamblauw_player1']}}
                     @endif
+                </td>
+                <td>
+                    @if($match['teamblauw_player2'] == Auth::user()->name and \App\Http\Controllers\scoreController::verloren($match) == true)
+                        <b style="color:rgb(208, 24, 24);">{!!$match['teamblauw_player2']!!}</b>
+                    @elseif($match['teamblauw_player2'] == Auth::user()->name)
+                        <b>{!!$match['teamblauw_player2']!!}</b>
+                    @else
+                        {{$match['teamblauw_player2']}}
+                    @endif
+                </td>
+            @endif
 
-                    {{--<td>--}}
-                        {{--@if($match['teamrood_player1'] == Auth::user()->name)--}}
-                            {{--<b>{!!$match['teamrood_player1']!!}</b>--}}
-                            {{--@else--}}
-                            {{--{{$match['teamrood_player1']}}--}}
-                        {{--@endif--}}
-                    {{--</td>--}}
-                    {{--<td>--}}
-                        {{--@if($match['teamrood_player2'] == Auth::user()->name)--}}
-                            {{--<b>{!!$match['teamrood_player2']!!}</b>--}}
-                            {{--@else--}}
-                            {{--{{$match['teamrood_player2']}}--}}
-                        {{--@endif--}}
-                    {{--</td>--}}
-                    <td>{{$match['score_blauw']}}</td>
-                    <td>{{$match['score_rood']}}</td>
-                    <td>{{$match['created_at']->format('d M Y - H:i')}}</td>
-                </tr>
+
+
+
+            @if($match['teamrood_player1'] == $match['teamrood_player2'])
+                <td colspan="2">
+                    @if($match['teamrood_player1'] == Auth::user()->name and \App\Http\Controllers\scoreController::verloren($match) == true)
+                        <b style="color:rgb(208, 24, 24);">{!!$match['teamrood_player1']!!}</b>
+                    @elseif($match['teamrood_player1'] == Auth::user()->name)
+                        <b>{!!$match['teamrood_player1']!!}</b>
+                    @else
+                        {{$match['teamrood_player1']}}
+                    @endif
+                </td>
+            @else
+                <td>
+                    @if($match['teamrood_player1'] == Auth::user()->name and \App\Http\Controllers\scoreController::verloren($match) == true)
+                        <b style="color:rgb(208, 24, 24);">{!!$match['teamrood_player1']!!}</b>
+                    @elseif($match['teamrood_player1'] == Auth::user()->name)
+                        <b>{!!$match['teamrood_player1']!!}</b>
+                    @else
+                        {{$match['teamrood_player1']}}
+                    @endif
+                </td>
+                <td>
+                    @if($match['teamrood_player2'] == Auth::user()->name and \App\Http\Controllers\scoreController::verloren($match) == true)
+                        <b style="color:rgb(208, 24, 24);">{!!$match['teamrood_player2']!!}</b>
+                    @elseif($match['teamrood_player2'] == Auth::user()->name)
+                        <b>{!!$match['teamrood_player2']!!}</b>
+                    @else
+                        {{$match['teamrood_player2']}}
+                    @endif
+                </td>
+            @endif
+                <td>{{$match['score_blauw']}}</td>
+                <td>{{$match['score_rood']}}</td>
+                <td>{{$match['created_at']->format('d M Y - H:i')}}</td>
+            </tr>
             @endforeach
             @else
-                <b>Je hebt nog geen matches gespeeld</b>
+                <strong>Je hebt nog geen matches gespeeld</strong>
             @endif
         </table>
     <br>

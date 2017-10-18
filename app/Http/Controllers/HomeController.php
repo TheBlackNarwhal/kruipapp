@@ -34,7 +34,7 @@ class HomeController extends Controller
             $query->where('teamrood_player1', '=', Auth::user()->name);
         })->orWhere(function ($query) {
             $query->where('teamrood_player2', '=', Auth::user()->name);
-        })->limit(5)->get();
+        })->limit(5)->orderBy('created_at', 'desc')->get();
 
         $score = score::where('naam', Auth::user()->name)->first();
 
@@ -49,7 +49,7 @@ class HomeController extends Controller
             $query->where('teamrood_player1', '=', Auth::user()->name);
         })->orWhere(function ($query) {
             $query->where('teamrood_player2', '=', Auth::user()->name);
-        })->get();
+        })->orderBy('created_at', 'desc')->get();
 
         $score = score::where('naam', Auth::user()->name)->first();
 
