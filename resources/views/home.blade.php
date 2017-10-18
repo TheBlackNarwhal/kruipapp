@@ -108,7 +108,7 @@
             @endif
         </table>
     @if($matches->count() > 0)
-    <a href="{{url('/mijnmatches')}}">Laat alles zien</a>
+    <a href="{{url('/mijnmatches')}}">Laat alles zien ( {{$totaalaantalmatches->count() - 5}} meer )</a>
     @else
     @endif
     

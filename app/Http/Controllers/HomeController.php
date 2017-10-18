@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+
+    public $limithomepage = 5;
     /**
      * Create a new controller instance.
      *
@@ -28,17 +30,27 @@ class HomeController extends Controller
     
     public function index()
     {
+        $element = 'limithomepage';
         $matches = match::where('teamblauw_player1', '=', Auth::user()->name)->orWhere(function ($query) {
             $query->where('teamblauw_player2', '=', Auth::user()->name);
         })->orWhere(function ($query) {
             $query->where('teamrood_player1', '=', Auth::user()->name);
         })->orWhere(function ($query) {
             $query->where('teamrood_player2', '=', Auth::user()->name);
-        })->limit(5)->orderBy('created_at', 'desc')->get();
+        })->limit($this->$element)->orderBy('created_at', 'desc')->get();
 
+
+        //Niet netjes
+        $totaalaantalmatches = match::where('teamblauw_player1', '=', Auth::user()->name)->orWhere(function ($query) {
+            $query->where('teamblauw_player2', '=', Auth::user()->name);
+        })->orWhere(function ($query) {
+            $query->where('teamrood_player1', '=', Auth::user()->name);
+        })->orWhere(function ($query) {
+            $query->where('teamrood_player2', '=', Auth::user()->name);
+        })->orderBy('created_at', 'desc')->get();
         $score = score::where('naam', Auth::user()->name)->first();
 
-        return view('home', compact('matches', 'score'));
+        return view('home', compact('matches', 'score', 'totaalaantalmatches'));
     }
 
     public function show()
@@ -56,6 +68,7 @@ class HomeController extends Controller
         return view('mijnmatches', compact('matches', 'score'));
     }
 
+    
 
     public function welcomepage()
     {
