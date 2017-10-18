@@ -26,9 +26,9 @@
                 </tr>
             </thead>
                 @foreach ($matches as $match)
-                @if($match['teamblauw_player1'] == Auth::user()->name || $match['teamblauw_player2'] == Auth::user()->name and $match['score_blauw'] < $match['score_rood'])
+                @if(\App\Http\Controllers\scoreController::verloren($match))
                     <tr style="color:#d01818;">
-                @elseif($match['teamrood_player1'] == Auth::user()->name || $match['teamrood_player2'] == Auth::user()->name and $match['score_rood'] < $match['score_blauw'])
+                @elseif(\App\Http\Controllers\scoreController::verloren($match))
                     <tr style="color:#d01818;">
                 @else
                     <tr>

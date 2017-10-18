@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\score;
 use App\match;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class scoreController extends Controller
 {
@@ -150,5 +151,18 @@ class scoreController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+
+    public static function verloren($match)
+    {
+        $verloren = false;
+        if($match['teamblauw_player1'] == Auth::user()->name || $match['teamblauw_player2'] == Auth::user()->name and $match['score_blauw'] < $match['score_rood']){
+            $verloren = true;
+        }elseif($match['teamrood_player1'] == Auth::user()->name || $match['teamrood_player2'] == Auth::user()->name and $match['score_rood'] < $match['score_blauw']){
+            $verloren = true;
+        }
+        return $verloren;
     }
 }
