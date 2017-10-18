@@ -26,7 +26,7 @@
             </thead>
                 @foreach ($matches as $match)
                 @if(\App\Http\Controllers\scoreController::verloren($match))
-                <tr style="color:#d01818;">
+                    <tr style="color:#d01818;">
                 @elseif(\App\Http\Controllers\scoreController::verloren($match))
                     <tr style="color:#d01818;">
                 @else

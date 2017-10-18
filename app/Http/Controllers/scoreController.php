@@ -165,4 +165,15 @@ class scoreController extends Controller
         }
         return $verloren;
     }
+
+    public static function tegenstanderKruipen($match)
+    {
+        $gewonnen = false;
+        if($match['teamblauw_player1'] == Auth::user()->name || $match['teamblauw_player2'] == Auth::user()->name and $match['score_blauw'] - $match['score_rood'] >= 5){
+            $gewonnen = true;
+        }elseif($match['teamrood_player1'] == Auth::user()->name || $match['teamrood_player2'] == Auth::user()->name and $match['score_rood'] - $match['score_blauw'] >= 5){
+            $gewonnen = true;
+        }
+        return $gewonnen;
+    }
 }
