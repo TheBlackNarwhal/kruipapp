@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>CreateMatch</title>
-</head>
-<body>
+
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
-    @include('layouts.header')
+
         <form method="post" action="{{url('scores')}}">
             
             <div class="input-field">
@@ -25,16 +18,16 @@
         <div class="row">
             <div class="col s6">
                 <h5>Team Blauw:</h5>
-                <div class="input-field">
-                    <select name="teamblauw_player1" placeholder="Kies" class="select-button">
+                <div>
+                    <select id="selectfirst" name="teamblauw_player1" placeholder="Kies" class="select-button" onchange="selectfirstfunc('selectfirst', 'selectsecond')">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="input-field">
-                    <select name="teamblauw_player2" class="select-button">
+                <div>
+                    <select id="selectsecond" name="teamblauw_player2" class="select-button">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -55,7 +48,6 @@
                 <div class="input-field">
                     <select name="teamrood_player2" class="select-button">
                     <option value="" disabled selected>Wie...</option>
-                    
                     @foreach ($scores as $score)
                         @if (!in_array($score['naam'], $namen));
                         <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -84,15 +76,78 @@
 
 </div>
 
+@endsection
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $('.dropdown-button').dropdown();
-        $('.select-button').material_select();
+        // $('.select-button').material_select();
+
     });
+    var laatstenaam;
+    var x = 0; var y = -2; var door = false;
+    var array = [];
+
+    
+function selectfirstfunc() {
+        if(x >= 2){
+            door = true;
+        }
+        x++;
+        y++;
+        
+        //Laat naam hiden
+        var selectBox = document.getElementById("selectfirst");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        $('#selectsecond option[value='+selectedValue+']').hide();
+
+        laatstenaam = selectedValue;
+        array.push(laatstenaam);
+        
+        laatstenaam = array[y];
+        if(x >= 2){
+            x=1;
+            laatweerzien();
+        }
+    }
+
+function laatweerzien(){
+        console.log("laatstenaam " + laatstenaam);
+        $('#selectsecond option[value='+laatstenaam+']').show();
+    }
+    
+
+    // function selectsecondfunc() {
+    //     var selectBox = document.getElementById("selectfirst");
+    //     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    //     $('#selectsecond option[value='+selectedValue+']').show();
+    // }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // $('selectfirst').change(function(){
+        //     var val1 = $(this).val();
+        //     $('#selectsecond option[value='+val1+']').hide();
+        // });
+
 </script>
 </body>
 </html>
