@@ -21,6 +21,7 @@
                         <option value="0">2v2</option>
                     </select>
                 </div>
+<?php $namen = array(); ?>
         <div class="row">
             <div class="col s6">
                 <h5>Team Blauw:</h5>
@@ -53,10 +54,13 @@
                 </div>
                 <div class="input-field">
                     <select name="teamrood_player2" class="select-button">
-                        <option value="" disabled selected>Wie...</option>
-                        @foreach ($scores as $score)
-                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
-                        @endforeach
+                    <option value="" disabled selected>Wie...</option>
+                    
+                    @foreach ($scores as $score)
+                        @if (!in_array($score['naam'], $namen));
+                        <option value="{{$score['naam']}}">{{$score['naam']}}</option>
+                        @endif
+                    @endforeach
                     </select>
                 </div>
             </div>
