@@ -131,6 +131,7 @@
         </table>
     <br>
     <a href="home">Terug</a>
+    <br><br><br>
 </div>
 
 @endsection

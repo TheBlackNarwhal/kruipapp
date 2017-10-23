@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,44 +12,19 @@
           
         </style>
 </head>
-<body>
+<body> -->
 
-    <!-- @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/scores') }}">Scores</a>
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">Register</a>
-            @endauth
-        </div>
-    @endif -->
-    <!--
-    <table style="margin-top: 50px;">
-        <tr>
-            <th>Score</th>
-            <th>Naam</th>
-            <th>Kruipen</th>
-        </tr>
-        @foreach ($scores as $score)
-            <tr>
-                <td>{{$score['kruipscore']}}</td>
-                <td>{{$score['naam']}}</td>
-                <td>{{$score['gewonnengames']}}</td>
-            </tr>
-        @endforeach
+@extends('layouts.app')
 
-    </table> -->
-
+@section('content')
     <div class="container">
 
-    @include('layouts.header')
+
 
       <div class="row">
-		<div class="col s6">
+		<div class="col-sm-6">
           <h5>Kruipscore</h5>
-          <table class="striped">
+          <table border="1" class="striped">
             <thead>
                 <th>Gekropen</th>
                 <th>Wie</th>
@@ -65,9 +40,9 @@
             @endforeach
           </table>
     </div>
-        <div class="col s6">
+        <div class="col-sm-6">
         <h5>Recente matches</h5>
-          <table class="striped">
+          <table border="1" class="striped">
             <thead>
                 <th>Team Blauw</th>
                 <th>Team Rood</th>
@@ -101,7 +76,7 @@
 
 </div>
 
-
+@endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
