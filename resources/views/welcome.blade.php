@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>KruipApp</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -119,51 +119,7 @@
 
 
 
-                {{--<tr>--}}
-                    {{--<td><h2>10</h2></td>--}}
-                    {{--<td><h2>Darwin</h2></td>--}}
-                    {{--<td><h2>1</h2></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h3>10</h3></td>--}}
-                    {{--<td><h3>Darwin</h3></td>--}}
-                    {{--<td><h3>1</h3></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h4>10</h4></td>--}}
-                    {{--<td><h4>Darwin</h4></td>--}}
-                    {{--<td><h4>1</h4></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h4>10</h4></td>--}}
-                    {{--<td><h4>Darwin</h4></td>--}}
-                    {{--<td><h4>1</h4></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h4>10</h4></td>--}}
-                    {{--<td><h4>Darwin</h4></td>--}}
-                    {{--<td><h4>1</h4></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h4>10</h4></td>--}}
-                    {{--<td><h4>Darwin</h4></td>--}}
-                    {{--<td><h4>1</h4></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h4>10</h4></td>--}}
-                    {{--<td><h4>Darwin</h4></td>--}}
-                    {{--<td><h4>1</h4></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h4>10</h4></td>--}}
-                    {{--<td><h4>Darwin</h4></td>--}}
-                    {{--<td><h4>1</h4></td>--}}
-                {{--</tr>--}}
-                {{--<tr>--}}
-                    {{--<td><h4>10</h4></td>--}}
-                    {{--<td><h4>Darwin</h4></td>--}}
-                    {{--<td><h4>1</h4></td>--}}
-                {{--</tr>--}}
+                
               
             </table>
     </body>

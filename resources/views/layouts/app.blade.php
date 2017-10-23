@@ -7,11 +7,20 @@
     <link rel="stylesheet" href="css/mijnmatch.css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+    td, th{
+        padding: 5px;
+    }
+    </style>
+
 </head>
 <body>
     <div id="app">
@@ -46,14 +55,22 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                        @if($_SERVER['REQUEST_URI'] == "/home")
+                            <li><a href="{{url('/scores/create')}}">Nieuwe Match</a></li>
                             <li><a href="{{url('/scores')}}">Scores</a></li>
-                            <li></li>
+                        @elseif($_SERVER['REQUEST_URI'] == "/scores")
+                            <li><a href="{{url('/scores/create')}}">Nieuwe Match</a></li>
+                        @elseif($_SERVER['REQUEST_URI'] == "/scores/create")
+                            <li><a href="{{url('/scores')}}">Scores</a></li>
+                        @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{url('/home')}}">Home</a></li>
+                                    <li><a href="">Settings</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
