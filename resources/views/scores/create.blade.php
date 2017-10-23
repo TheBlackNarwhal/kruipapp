@@ -3,23 +3,24 @@
 
 @section('content')
 <div class="container">
-
+<h5>Soort game:</h5>
         <form method="post" action="{{url('scores')}}">
-            
+        
             <div class="input-field">
+            
                     <select class="select-button">
-                        <option value="" disabled selected>Soort Game</option>
+                        <!-- <option value="" disabled selected>Soort Game</option> -->
                         <option value="0">1v1</option>
                         <option value="0">1v2</option>
-                        <option value="0">2v2</option>
+                        <option value="0" selected>2v2</option>
                     </select>
                 </div>
 <?php $namen = array(); ?>
         <div class="row">
             <div class="col s6">
                 <h5>Team Blauw:</h5>
-                <div>
-                    <select id="selectfirst" name="teamblauw_player1" placeholder="Kies" class="select-button" data-style="btn-primary" data-live-search="true" onchange="selectFirstFunc()">
+                <div class="selectfirstopmaak">
+                    <select id="selectfirst" name="teamblauw_player1" placeholder="Kies" class="select-button "  data-live-search="true" onchange="selectFirstFunc()">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -27,7 +28,7 @@
                     </select>
                 </div>
                 <div>
-                    <select id="selectsecond" name="teamblauw_player2" class="select-button" data-style="btn-primary" onchange="selectSecondFunc()">
+                    <select id="selectsecond" name="teamblauw_player2" class="select-button "  onchange="selectSecondFunc()">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -38,7 +39,7 @@
             <div class="col s6">
                 <h5>Team Rood:</h5>
                 <div class="input-field">
-                    <select id="selectthird" name="teamrood_player1" class="select-button" data-style="btn-danger" onchange="selectThirdFunc()">
+                    <select id="selectthird" name="teamrood_player1" class="select-button " onchange="selectThirdFunc()">
                     <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -46,7 +47,7 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <select id="selectfourth" name="teamrood_player2" class="select-button" data-style="btn-danger" onchange="selectFourthFunc()">
+                    <select id="selectfourth" name="teamrood_player2" class="select-button " onchange="selectFourthFunc()">
                     <option value="" disabled selected>Wie...</option>
                     @foreach ($scores as $score)
                         @if (!in_array($score['naam'], $namen));
@@ -88,8 +89,8 @@
 
     });
     var laatstenaam;
-    var x = 0; var y = -2; var door = false;
-    var array = [];
+
+
     var selected = [];
 
 
