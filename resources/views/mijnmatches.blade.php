@@ -9,12 +9,12 @@
     <hr>
     <h4>Totaal aantal matches: {{$matches->count()}}</h4>
     <h4>Aantal gewonnen games: {{$score['gewonnengames']}}</h4>
-    <h4>Aantal games tegenstander laten kruipen:</h4>
+    <!-- <h4>Aantal games tegenstander laten kruipen:</h4> -->
     <h4>Aantal gekropen games: {{$score['kruipscore']}}</h4>
     <br>
     <h5>Legenda:</h5>
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(208, 24, 24); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Verloren</p>
-    <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(255, 188, 0); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Verloren zonder kruipen</p>
+    <!-- <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(255, 188, 0); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Verloren zonder kruipen</p> -->
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(15, 197, 46); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Tegenstander kruipen</p>
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:#4e9dd2; float:left;"></div><p style="margin: -6px 0 11px 18px;">Mij</p>
     <br>

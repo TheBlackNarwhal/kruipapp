@@ -70,7 +70,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{url('/home')}}">Home</a></li>
-                                    <li><a href="">Settings</a></li>
+                                    <!-- <li><a href="">Settings</a></li> -->
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

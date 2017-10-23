@@ -3,18 +3,10 @@
 
 @section('content')
 <div class="container">
-<h5>Soort game:</h5>
+
         <form method="post" action="{{url('scores')}}">
         
-            <div class="input-field">
-            
-                    <select class="select-button">
-                        <!-- <option value="" disabled selected>Soort Game</option> -->
-                        <option value="0">1v1</option>
-                        <option value="0">1v2</option>
-                        <option value="0" selected>2v2</option>
-                    </select>
-                </div>
+
 <?php $namen = array(); ?>
         <div class="row">
             <div class="col s6">
