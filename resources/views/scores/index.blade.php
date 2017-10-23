@@ -22,8 +22,8 @@
 
 
       <div class="row">
-		<div class="col-sm-6">
-          <h5>Kruipscore</h5>
+		<div class="col-sm-5">
+          <h5>Kruipscore: </h5>
           <table border="1" class="striped">
             <thead>
                 <th>Gekropen</th>
@@ -40,8 +40,8 @@
             @endforeach
           </table>
     </div>
-        <div class="col-sm-6">
-        <h5>Recente matches</h5>
+        <div class="col-sm-7">
+        <h5>Recente matches: </h5>
           <table border="1" class="striped">
             <thead>
                 <th>Team Blauw</th>

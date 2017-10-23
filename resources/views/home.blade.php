@@ -7,11 +7,12 @@
 <div class="container">
 <h1>Hallo {{Auth::user()->name}}</h1>
     <hr>
+    <h4>Totaal aantal matches: {{$matches->count()}}</h4>
     <h4>Aantal gewonnen games: {{$score['gewonnengames']}}</h4>
     <h4>Aantal gekropen games: {{$score['kruipscore']}}</h4>
     <br>
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(208, 24, 24); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Verloren</p>
-    <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(255, 188, 0); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Verloren zonder kruipen</p>
+    <!-- <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(255, 188, 0); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Verloren zonder kruipen</p> -->
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(15, 197, 46); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Tegenstander kruipen</p>
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:#4e9dd2; float:left;"></div><p style="margin: -6px 0 11px 18px;">Mij</p>
     
@@ -123,8 +124,8 @@
             <strong>Je hebt nog geen matches gespeeld</strong>
         @endif
         </table>
-    @if($match->count() > 5)
-    <a href="{{url('/mijnmatches')}}">Laat alles zien ( {{$totaalaantalmatches->count() - 5}} meer )</a>
+    @if($totaalaantalmatches->count() > 5)
+        <a href="{{url('/mijnmatches')}}">Laat alles zien ( {{$totaalaantalmatches->count() - 5}} meer )</a>
     @else
     @endif
     
@@ -132,7 +133,7 @@
     <br><br>
 
 
-    <h4>Beste matches:</h4>
+    <!-- <h4>Beste matches:</h4>
     <table border="1" class="striped">
         <thead align="center">
         <tr>
@@ -145,7 +146,7 @@
             <th><h4>Gespeeld op:</h4></th>
         </tr>
         </thead>
-    </table>
+    </table> -->
     </div>
 
 @endsection
