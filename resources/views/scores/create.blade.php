@@ -19,7 +19,7 @@
             <div class="col s6">
                 <h5>Team Blauw:</h5>
                 <div>
-                    <select id="selectfirst" name="teamblauw_player1" placeholder="Kies" class="select-button" onchange="selectfirstfunc('selectfirst', 'selectsecond')">
+                    <select id="selectfirst" name="teamblauw_player1" placeholder="Kies" class="select-button" data-style="btn-primary" data-live-search="true" onchange="selectFirstFunc()">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -27,7 +27,7 @@
                     </select>
                 </div>
                 <div>
-                    <select id="selectsecond" name="teamblauw_player2" class="select-button">
+                    <select id="selectsecond" name="teamblauw_player2" class="select-button" data-style="btn-primary" onchange="selectSecondFunc()">
                         <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -38,7 +38,7 @@
             <div class="col s6">
                 <h5>Team Rood:</h5>
                 <div class="input-field">
-                    <select name="teamrood_player1" class="select-button">
+                    <select id="selectthird" name="teamrood_player1" class="select-button" data-style="btn-danger" onchange="selectThirdFunc()">
                     <option value="" disabled selected>Wie...</option>
                         @foreach ($scores as $score)
                             <option value="{{$score['naam']}}">{{$score['naam']}}</option>
@@ -46,7 +46,7 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <select name="teamrood_player2" class="select-button">
+                    <select id="selectfourth" name="teamrood_player2" class="select-button" data-style="btn-danger" onchange="selectFourthFunc()">
                     <option value="" disabled selected>Wie...</option>
                     @foreach ($scores as $score)
                         @if (!in_array($score['naam'], $namen));
@@ -65,8 +65,8 @@
           
             {{csrf_field()}}
             <h5>Stand</h5>
-            <input type="number" name="score_blauw" value="" placeholder="Team blauw"><br>
-            <input type="number" name="score_rood" value="" placeholder="Team rood"><br>
+            <input type="number" name="score_blauw" value="" placeholder="Team blauw" class="form-control"><br>
+            <input type="number" name="score_rood" value="" placeholder="Team rood" class="form-control"><br>
             <!-- <input class="waves-effect waves-light btn" type="submit" value="Toevoegen"> -->
             <button class="waves-effect waves-light btn" type="submit"  style="margin-left:38px">Add match</button>
         </form>
@@ -90,63 +90,224 @@
     var laatstenaam;
     var x = 0; var y = -2; var door = false;
     var array = [];
+    var selected = [];
 
-    
-function selectfirstfunc() {
-        if(x >= 2){
-            door = true;
-        }
-        x++;
-        y++;
-        
-        //Laat naam hiden
+
+    function selectFirstFunc() {
         var selectBox = document.getElementById("selectfirst");
         var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-        $('#selectsecond option[value='+selectedValue+']').hide();
 
-        laatstenaam = selectedValue;
-        array.push(laatstenaam);
+        // $('#selectfirst option[value='+selected[0]+']').hide();
+        $('#selectsecond option[value='+selected[0]+']').show();
+        $('#selectthird option[value='+selected[0]+']').show();
+        $('#selectfourth option[value='+selected[0]+']').show();
+
+        selected.splice(0, 1, selectedValue);
+
+        // $('#selectfirst option[value='+selected[0]+']').hide();
+        $('#selectsecond option[value='+selected[0]+']').hide();
+        $('#selectthird option[value='+selected[0]+']').hide();
+        $('#selectfourth option[value='+selected[0]+']').hide();
+    }
+
+
+    function selectSecondFunc() {
+        var selectBox = document.getElementById("selectsecond");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+        $('#selectfirst option[value='+selected[1]+']').show();
+        // $('#selectsecond option[value='+selected[0]+']').hide();
+        $('#selectthird option[value='+selected[1]+']').show();
+        $('#selectfourth option[value='+selected[1]+']').show();
+
+        selected.splice(1, 1, selectedValue);
         
-        laatstenaam = array[y];
-        if(x >= 2){
-            x=1;
-            laatweerzien();
-        }
+        $('#selectfirst option[value='+selected[1]+']').hide();
+        // $('#selectsecond option[value='+selected[0]+']').hide();
+        $('#selectthird option[value='+selected[1]+']').hide();
+        $('#selectfourth option[value='+selected[1]+']').hide();
     }
 
-function laatweerzien(){
-        console.log("laatstenaam " + laatstenaam);
-        $('#selectsecond option[value='+laatstenaam+']').show();
-    }
-    
 
-    // function selectsecondfunc() {
+    function selectThirdFunc() {
+        var selectBox = document.getElementById("selectthird");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+        $('#selectfirst option[value='+selected[2]+']').show();
+        $('#selectsecond option[value='+selected[2]+']').show();
+        // $('#selectthird option[value='+selected[0]+']').hide();
+        $('#selectfourth option[value='+selected[2]+']').show();
+        
+        selected.splice(2, 1, selectedValue);
+
+        $('#selectfirst option[value='+selected[2]+']').hide();
+        $('#selectsecond option[value='+selected[2]+']').hide();
+        // $('#selectthird option[value='+selected[0]+']').hide();
+        $('#selectfourth option[value='+selected[2]+']').hide();
+    }
+
+
+    function selectFourthFunc() {
+        var selectBox = document.getElementById("selectfourth");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+        $('#selectfirst option[value='+selected[3]+']').show();
+        $('#selectsecond option[value='+selected[3]+']').show();
+        $('#selectthird option[value='+selected[3]+']').show();
+
+        selected.splice(3, 1, selectedValue);
+
+        $('#selectfirst option[value='+selected[3]+']').hide();
+        $('#selectsecond option[value='+selected[3]+']').hide();
+        $('#selectthird option[value='+selected[3]+']').hide();
+        // $('#selectfourth option[value='+selected[0]+']').hide();
+    }
+
+
+
+
+
+
+
+
+
+
+    // function selectFirstFunc() {
+     
+    //     x++;
+    //     y++;
+        
+    //     //Laat naam hiden
     //     var selectBox = document.getElementById("selectfirst");
     //     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    //     $('#selectsecond option[value='+selectedValue+']').show();
+
+    //     selected.splice(0, 1, selectedValue);
+    //     console.log(selected);
+
+    //     $('#selectsecond option[value='+selectedValue+']').hide();
+    //     $('#selectthird option[value='+selectedValue+']').hide();
+    //     $('#selectfourth option[value='+selectedValue+']').hide();
+      
+    //     laatstenaam = selectedValue;
+    //     array.push(laatstenaam);
+    //     checkArray();
+    //     laatstenaam = array[y];
+        
+        
+
+    //     if(x >= 2){
+    //         x=1;
+    //         if(selected.includes(laatstenaam)){
+
+    //         }else{
+    //             $('#selectfirst option[value='+laatstenaam+']').show();
+    //             $('#selectsecond option[value='+laatstenaam+']').show();
+    //             $('#selectthird option[value='+laatstenaam+']').show();
+    //             $('#selectfourth option[value='+laatstenaam+']').show();
+    //         }
+    //     }
+    // }
+
+    // function selectSecondFunc() {
+
+    //     x++;
+    //     y++;
+        
+    //     //Laat naam hiden
+    //     var selectBox = document.getElementById("selectsecond");
+    //     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+    //     selected.splice(1, 1, selectedValue);
+    //     console.log(selected);
+    //     $('#selectfirst option[value='+selectedValue+']').hide();
+    //     $('#selectthird option[value='+selectedValue+']').hide();
+    //     $('#selectfourth option[value='+selectedValue+']').hide();
+
+    //     laatstenaam = selectedValue;
+    //     array.push(laatstenaam);
+        
+    //     laatstenaam = array[y];
+    //     if(x >= 2){
+    //         x=1;
+    //         if(selected.includes(laatstenaam)){
+
+    //         }else{
+    //             $('#selectfirst option[value='+laatstenaam+']').show();
+    //             $('#selectsecond option[value='+laatstenaam+']').show();
+    //             $('#selectthird option[value='+laatstenaam+']').show();
+    //             $('#selectfourth option[value='+laatstenaam+']').show();
+    //         }
+    //     }
+    // }
+
+
+    // function selectThirdFunc() {
+
+    //     x++;
+    //     y++;
+        
+    //     //Laat naam hiden
+    //     var selectBox = document.getElementById("selectthird");
+    //     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+    //     selected.splice(2, 1, selectedValue);
+    //     console.log(selected);
+    //     $('#selectfirst option[value='+selectedValue+']').hide();
+    //     $('#selectsecond option[value='+selectedValue+']').hide();
+    //     $('#selectfourth option[value='+selectedValue+']').hide();
+
+    //     laatstenaam = selectedValue;
+    //     array.push(laatstenaam);
+        
+    //     laatstenaam = array[y];
+    //     if(x >= 2 ){
+    //         x=1;
+    //         if(selected.includes(laatstenaam)){
+
+    //         }else{
+    //             $('#selectfirst option[value='+laatstenaam+']').show();
+    //             $('#selectsecond option[value='+laatstenaam+']').show();
+    //             $('#selectthird option[value='+laatstenaam+']').show();
+    //             $('#selectfourth option[value='+laatstenaam+']').show();
+    //         }
+    //     }
     // }
     
+    
+    
+    // function selectFourthFunc() {
 
+    //     x++;
+    //     y++;
+        
+    //     //Laat naam hiden
+    //     var selectBox = document.getElementById("selectfourth");
+    //     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
+    //     selected.splice(3, 1, selectedValue);
+    //     console.log(selected);
+    //     $('#selectfirst option[value='+selectedValue+']').hide();
+    //     $('#selectsecond option[value='+selectedValue+']').hide();
+    //     $('#selectthird option[value='+selectedValue+']').hide();
 
+    //     laatstenaam = selectedValue;
+    //     array.push(laatstenaam);
+        
+    //     laatstenaam = array[y];
+    //     if(x >= 2){
+    //         x=1;
+    //         if(selected.includes(laatstenaam)){
 
+    //         }else{
+    //             $('#selectfirst option[value='+laatstenaam+']').show();
+    //             $('#selectsecond option[value='+laatstenaam+']').show();
+    //             $('#selectthird option[value='+laatstenaam+']').show();
+    //             $('#selectfourth option[value='+laatstenaam+']').show();
+    //         }
+    //     }
+    // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-        // $('selectfirst').change(function(){
-        //     var val1 = $(this).val();
-        //     $('#selectsecond option[value='+val1+']').hide();
-        // });
+ 
 
 </script>
 </body>
