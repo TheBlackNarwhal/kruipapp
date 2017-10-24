@@ -64,9 +64,7 @@ class scoreController extends Controller
             $this->updateGewonnen($score['teamrood_player1'], $score['teamrood_player2']);
             
             if($score['score_rood'] - $score['score_blauw'] > 5){
-                //Hier stond niks maar heb ik dus toegevoegd
-                // ik heb het weer uitgecomment
-                // $this->updateKruipen($score['teamrood_player1'], $score['teamrood_player2']);
+                $this->updateKruipen($score['teamblauw_player1'], $score['teamblauw_player2']);
             }
        }else{
            //error
