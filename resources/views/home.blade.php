@@ -7,7 +7,7 @@
 <div class="container">
 <h1>Hallo {{Auth::user()->name}}</h1>
     <hr>
-    <h4>Totaal aantal matches: {{$matches->count()}}</h4>
+    <h4>Totaal aantal matches: {{$totaalaantalmatches->count()}}</h4>
     <h4>Aantal gewonnen games: {{$score['gewonnengames']}}</h4>
     <h4>Aantal gekropen games: {{$score['kruipscore']}}</h4>
     <br>
