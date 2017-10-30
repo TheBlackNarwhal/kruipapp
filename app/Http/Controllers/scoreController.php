@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\score;
 use App\match;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,7 +54,9 @@ class scoreController extends Controller
             'score_blauw' => 'required',
             'score_rood' => 'required'
         ]);
-        
+
+
+
         if($score['score_blauw'] > $score['score_rood']){
             $this->updateGewonnen($score['teamblauw_player1'], $score['teamblauw_player2']);
 
@@ -76,6 +79,7 @@ class scoreController extends Controller
 
     public function updateKruipen($i1, $i2)
     {
+
         $persoon1 = score::where('naam', $i1)->first();
         $persoon2 = score::where('naam', $i2)->first();
         

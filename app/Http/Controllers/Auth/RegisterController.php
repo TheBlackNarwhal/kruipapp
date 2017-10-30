@@ -43,7 +43,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -58,24 +58,34 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
-    {   
-        // $score = new scoreController();
-        // $score->maakgelijk($data['name'], $data['name']);
+    {
+        $user = new User;
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
 
-        score::create([
-            'naam' => $data['name'],
-            'email' => $data['email']
-        ]);
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-        
-        
+        $result = false;
+
+        if ($user->save()) {
+            $userId = $user->id;
+
+            $score = new score;
+            $score->user_id = $userId;
+
+            if ($score->save()) {
+                $result = true;
+            }
+
+        }
+
+        return $user;
     }
+
+
+
+
 }
