@@ -29,7 +29,9 @@
                     <th><h4>Gespeeld op:</h4></th>
                 </tr>
             </thead>
-                {{$persoon1}}
+                {{--{{$persoon1}}--}}
+            <br>
+            {{--{{$score}}--}}
             @foreach ($matches as $match)
 
 

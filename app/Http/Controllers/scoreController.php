@@ -104,34 +104,24 @@ class scoreController extends Controller
    
     public function updateGewonnen($p1, $p2)
     {
-        $newscore = new score("gewonnengames");
-//
-////        $persoon1 = $score->user()->where("name", $i1);
-////        $persoon2 = $score->user()->where("name", $i2)->first();
-//
-//        $persoon1  = User::with('score')->find($p1['id'])->toArray();
-//        $persoon2  = User::with('score')->where("name", "$p1")->get();
-//
-////        $persoon1 = score::where('naam', $i1)->first();
-////        $persoon2 = score::where('naam', $i2)->first();
-//
-//
-//        $persoon1['gewonnengames']++;
-////        $persoon2->gewonnengames++;
-//        $persoon1->save();
-////        $persoon2->save();
-
-       $persoon1 = User::find($p1);
-       $persoon2 = User::find($p2);
-
-//        $persoon1 = score::with('score')->find($p1);
-//        $persoon2 = User::with('score')->find($p2);
+//        $persoon1 = User::with('score')->find($p1);
+//        $score = $persoon1['gewonnengames'];
+//        $score++;
+//        $persoon1->score()->update(['gewonnengames' => $score]);
 
 
-        $persoon1->gewonnengames++;
-        $persoon2->gewonnengames++;
-        $persoon1->save();
-        $persoon2->save();
+        $persoon1 = User::with('score')->find($p1);
+        $persoon1->score()->update(['gewonnengames' => 100]);
+
+        $persoon2 = User::with('score')->find($p2);
+        $persoon2->score()->update(['gewonnengames' => 100]);
+
+//        $persoon1 = User::find($p1);
+//        $persoon1->score()->update(['gewonnengames' => 0]);
+//
+//        $persoon2 = User::find($p2);
+//        $persoon2->score()->update(['gewonnengames' => 0]);
+
     }
 
     public function maakGelijk($email, $name)

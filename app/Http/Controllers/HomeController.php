@@ -52,7 +52,9 @@ class HomeController extends Controller
 
         $score = score::where('user_id', Auth::user()->id)->first();
 
-        $persoon1 = User::with('score')->find(5);
+
+
+
 
 
 
