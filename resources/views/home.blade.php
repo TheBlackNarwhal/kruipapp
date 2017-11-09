@@ -15,7 +15,6 @@
     <!-- <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(255, 188, 0); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Verloren zonder kruipen</p> -->
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:rgb(15, 197, 46); margin-bottom:8px; float:left;"></div><p style="margin: -6px 0 11px 18px;">Tegenstander kruipen</p>
     <div style="height:12px; width: 12px; border:2px solid lightgray; background:#4e9dd2; float:left;"></div><p style="margin: -6px 0 11px 18px;">Mij</p>
-    
     <h4>Mijn match history:</h4>
         <table border="1" class="striped">
             @if($matches->count() > 0)
@@ -30,12 +29,15 @@
                     <th><h4>Gespeeld op:</h4></th>
                 </tr>
             </thead>
+                {{$persoon1}}
             @foreach ($matches as $match)
+
+
             <tr>
             @if($match['teamblauw_player1'] == $match['teamblauw_player2'])
             <td colspan="2">
                
-                   
+
                 @if($match['teamblauw_player1'] == Auth::user()->name)
                     <b>{!!$match['teamblauw_player1']!!}</b>
                 @else

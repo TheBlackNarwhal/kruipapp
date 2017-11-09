@@ -14,16 +14,16 @@
                 <div class="selectfirstopmaak">
                     <select id="selectfirst" name="teamblauw_player1" placeholder="Kies" class="select-button "  data-live-search="true" onchange="selectFirstFunc()">
                         <option value="" disabled selected>Wie...</option>
-                        @foreach ($scores as $score)
-                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
+                        @foreach ($users as $user)
+                            <option value="{{$user['id']}}">{{$user['name']}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div>
                     <select id="selectsecond" name="teamblauw_player2" class="select-button "  onchange="selectSecondFunc()">
                         <option value="" disabled selected>Wie...</option>
-                        @foreach ($scores as $score)
-                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
+                        @foreach ($users as $user)
+                            <option value="{{$user['id']}}">{{$user['name']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -33,18 +33,16 @@
                 <div class="input-field">
                     <select id="selectthird" name="teamrood_player1" class="select-button " onchange="selectThirdFunc()">
                     <option value="" disabled selected>Wie...</option>
-                        @foreach ($scores as $score)
-                            <option value="{{$score['naam']}}">{{$score['naam']}}</option>
+                        @foreach ($users as $user)
+                            <option value="{{$user['id']}}">{{$user['name']}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="input-field">
                     <select id="selectfourth" name="teamrood_player2" class="select-button " onchange="selectFourthFunc()">
                     <option value="" disabled selected>Wie...</option>
-                    @foreach ($scores as $score)
-                        @if (!in_array($score['naam'], $namen));
-                        <option value="{{$score['naam']}}">{{$score['naam']}}</option>
-                        @endif
+                    @foreach ($users as $user)
+                        <option value="{{$user['id']}}">{{$user['name']}}</option>
                     @endforeach
                     </select>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\score;
+use App\User;
 use App\match;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,9 +49,15 @@ class HomeController extends Controller
         })->orWhere(function ($query) {
             $query->where('teamrood_player2', '=', Auth::user()->name);
         })->orderBy('created_at', 'desc')->get();
-        $score = score::where('naam', Auth::user()->name)->first();
 
-        return view('home', compact('matches', 'score', 'totaalaantalmatches'));
+        $score = score::where('user_id', Auth::user()->id)->first();
+
+        $persoon1 = User::with('score')->find(5);
+
+
+
+        return view('home', compact('matches', 'score', 'totaalaantalmatches', 'persoon1'));
+
     }
 
     public function show()
@@ -63,7 +70,8 @@ class HomeController extends Controller
             $query->where('teamrood_player2', '=', Auth::user()->name);
         })->orderBy('created_at', 'desc')->get();
 
-        $score = score::where('naam', Auth::user()->name)->first();
+        $score = score::where('user_id', Auth::user()->id)->first();
+//        $lol = User()->score()
 
         return view('mijnmatches', compact('matches', 'score'));
     }

@@ -24,7 +24,7 @@ class scoreController extends Controller
     {
         $scores = score::orderBy('kruipscore', 'desc')->get();
         $matches = match::orderBy('id', 'desc')->limit(10)->get();
-        return view('scores.index', compact('scores', 'matches'));
+        return view('scores/index', compact('scores', 'matches'));
     }
 
     /**
@@ -34,8 +34,8 @@ class scoreController extends Controller
      */
     public function create()
     {
-        $scores = score::all()->toArray();
-        return view('scores.create', compact('scores'));
+        $users = User::with('score')->get();
+        return view('scores.create', compact('users'));
     }
 
     /**
@@ -80,28 +80,58 @@ class scoreController extends Controller
     public function updateKruipen($i1, $i2)
     {
 
-        $persoon1 = score::where('naam', $i1)->first();
-        $persoon2 = score::where('naam', $i2)->first();
-        
+
+//        $score = new score;
+
+//        $hoi  = User::find(2)->score;
+//        print_r($hoi);
+//        $persoon1 = score::where('naam', $i1)->first();
+//        $persoon2 = score::where('naam', $i2)->first();
+
+
+        $persoon1 = User::with('score')->where("id", $i1)->get();
+        $persoon2 = User::with('score')->where("id", $i2)->get();
+
+
+
         $persoon1->kruipscore++;
         $persoon2->kruipscore++;
         $persoon1->save();
         $persoon2->save();
 
-        
+
     }
    
-    public function updateGewonnen($i1, $i2)
+    public function updateGewonnen($p1, $p2)
     {
-        $persoon1 = score::where('naam', $i1)->first();
-        $persoon2 = score::where('naam', $i2)->first();
-        
+        $newscore = new score("gewonnengames");
+//
+////        $persoon1 = $score->user()->where("name", $i1);
+////        $persoon2 = $score->user()->where("name", $i2)->first();
+//
+//        $persoon1  = User::with('score')->find($p1['id'])->toArray();
+//        $persoon2  = User::with('score')->where("name", "$p1")->get();
+//
+////        $persoon1 = score::where('naam', $i1)->first();
+////        $persoon2 = score::where('naam', $i2)->first();
+//
+//
+//        $persoon1['gewonnengames']++;
+////        $persoon2->gewonnengames++;
+//        $persoon1->save();
+////        $persoon2->save();
+
+       $persoon1 = User::find($p1);
+       $persoon2 = User::find($p2);
+
+//        $persoon1 = score::with('score')->find($p1);
+//        $persoon2 = User::with('score')->find($p2);
+
+
         $persoon1->gewonnengames++;
         $persoon2->gewonnengames++;
         $persoon1->save();
         $persoon2->save();
-
-        
     }
 
     public function maakGelijk($email, $name)
