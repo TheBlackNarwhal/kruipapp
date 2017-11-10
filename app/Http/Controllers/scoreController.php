@@ -116,6 +116,21 @@ class scoreController extends Controller
         $persoon2 = User::with('score')->find($p2);
         $persoon2->score()->update(['gewonnengames' => 100]);
 
+
+        $persoon1 = score::where('naam', $i1)->first();
+        $persoon2 = score::where('naam', $i2)->first();
+
+        $persoon1->gewonnengames++;
+        $persoon2->gewonnengames++;
+        $persoon1->save();
+        $persoon2->save();
+
+
+
+
+
+
+
 //        $persoon1 = User::find($p1);
 //        $persoon1->score()->update(['gewonnengames' => 0]);
 //

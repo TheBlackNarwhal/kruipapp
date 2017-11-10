@@ -53,6 +53,17 @@ class HomeController extends Controller
         $score = score::where('user_id', Auth::user()->id)->first();
 
 
+        $persoon1 = User::with('score')->find(1);
+
+        $persoon1->score()->update(['gewonnengames' => $persoon1->score()->first()->gewonnengames++]);
+
+
+        $persoon1 = User::with('score')->find(1);
+//        echo $persoon1;
+        echo $persoon1->score()->first()->gewonnengames;
+//        $persoon1->score()->update(['gewonnengames' => 100]);
+        $persoon2 = User::with('score')->find(2);
+//        $persoon2->score()->update(['gewonnengames' => 100]);
 
 
 
